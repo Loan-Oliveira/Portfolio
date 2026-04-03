@@ -788,7 +788,7 @@ footer {
     <li><a href="#about">Sobre</a></li>
     <li><a href="#cta">Contato</a></li>
   </ul>
-  <a class="nav-cta" href="#cta">Vamos conversar</a>
+  <a class="nav-cta" href="https://wa.me/5541987389679?text=Olá,%20quero%20mais%20informações" target="_blank"><img src="img/WhatsApp.png" object-fit: contain;" />Vamos conversar</a>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -804,10 +804,11 @@ footer {
     <div class="hero-inner">
 
       <div class="hero-left">
+        <!------------
         <div class="hero-pill">
           <span class="pill"><span class="pill-dot"></span>Disponível para projetos</span>
         </div>
-
+        -->
         <h1 class="hero-title hero-h1">
           Landing pages<br>
           que <span class="gradient-text">convertem</span><br>
@@ -826,17 +827,19 @@ footer {
 
         <div class="hero-stats hero-stats-el">
           <div class="stat-item">
-            <span class="stat-num">30+</span>
+            <span class="stat-num">3+</span>
             <span class="stat-lbl">Projetos entregues</span>
           </div>
           <div class="stat-item">
             <span class="stat-num">100%</span>
             <span class="stat-lbl">Satisfação</span>
           </div>
+          <!----
           <div class="stat-item">
-            <span class="stat-num">3yr</span>
+            <span class="stat-num">6 anos</span>
             <span class="stat-lbl">Experiência</span>
           </div>
+        -->
         </div>
       </div>
 
@@ -844,10 +847,13 @@ footer {
       <div class="hero-right">
         <div class="floating-card glass glass-strong card-main-hero">
           <div class="preview-img">
-            <div class="work-thumb-icon">🚀</div>
+            <img src="img/SiteEvolk.png" style="width: 100%; height: 100%; object-fit: fill;" />
+            <!-- 
+            <div class="work-thumb-icon"></div>
+            -->
           </div>
-          <div class="card-proj-title">Alpha Store</div>
-          <div class="card-proj-type">E-commerce · Landing Page</div>
+          <div class="card-proj-title">E-Volk Eletropostos</div>
+          <div class="card-proj-type">Landing Page</div>
           <div style="display:flex;gap:.4rem;margin-top:.6rem;">
             <span class="tag">Design</span>
             <span class="tag">Dev</span>
@@ -855,9 +861,9 @@ footer {
         </div>
 
         <div class="floating-card glass card-mini-1">
-          <div class="mini-label">Conversão</div>
-          <div class="mini-val">+320%</div>
-          <div class="card-proj-type" style="font-size:.65rem;margin-top:.15rem;">vs. página anterior</div>
+          <div class="mini-label">Agilidade</div>
+          <div class="mini-val">-7</div>
+          <div class="card-proj-type" style="font-size:.65rem;margin-top:.15rem;">dias em média</div>
         </div>
 
         <div class="floating-card glass card-mini-2">
@@ -866,13 +872,13 @@ footer {
             <span style="font-size:.72rem;color:var(--text-muted);">Online agora</span>
           </div>
           <div class="mini-label">Projetos ativos</div>
-          <div class="mini-val">12</div>
+          <div class="mini-val">2</div>
         </div>
 
         <div class="floating-card glass card-mini-3">
           <div class="mini-label">⭐ Avaliação média</div>
           <div class="mini-val">5.0</div>
-          <div class="card-proj-type" style="font-size:.65rem;margin-top:.15rem;">30 avaliações</div>
+          <div class="card-proj-type" style="font-size:.65rem;margin-top:.15rem;">2 avaliações</div>
         </div>
       </div>
 
@@ -1278,14 +1284,14 @@ navLinks.querySelectorAll('a').forEach(a => {
 
 // ---- Ticker ----
 const tickerItems = [
-  '✦ Landing Pages', '✦ UI/UX Design', '✦ Front-end Dev',
-  '✦ Copywriting', '✦ Alta Conversão', '✦ Responsivo',
-  '✦ Animações', '✦ Resultados Reais', '✦ Entrega Rápida'
+  'Landing Pages', 'UI/UX Design', 'Front-end Dev',
+  'Alta Conversão', 'Responsivo',
+  'Animações', 'Resultados Reais', 'Entrega Rápida'
 ];
 const track = document.getElementById('ticker');
 const doubled = [...tickerItems, ...tickerItems];
 track.innerHTML = doubled.map(t =>
-  `<span class="ticker-item"><span class="star">✦</span>${t.replace('✦ ','')}</span>`
+  `<span class="ticker-item"><span class="star"> </span>${t.replace(' ','')}</span>`
 ).join('');
 
 // ---- Scroll Reveal ----
