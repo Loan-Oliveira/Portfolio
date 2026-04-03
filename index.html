@@ -44,7 +44,7 @@ body {
 }
 
 /* ============================================================
-   Cursor
+   CUSTOM CURSOR
 ============================================================ */
 #cursor {
   width: 12px; height: 12px;
@@ -57,7 +57,7 @@ body {
   transform: translate(-50%, -50%);
 }
 #cursor-ring {
-  width: 25px; height: 25px;
+  width: 36px; height: 36px;
   border: 1px solid rgba(167,139,250,0.5);
   border-radius: 50%;
   position: fixed; top: 0; left: 0;
@@ -69,7 +69,7 @@ body {
 body:hover #cursor { opacity: 1; }
 
 /* ============================================================
-   Orbes e fundo
+   BACKGROUND CANVAS & ORBS
 ============================================================ */
 #bg {
   position: fixed; inset: 0; z-index: 0;
@@ -97,16 +97,17 @@ body:hover #cursor { opacity: 1; }
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   pointer-events: none;
+  display: block;
 }
 
 /* ============================================================
-   Layout
+   LAYOUT
 ============================================================ */
 main { position: relative; z-index: 1; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
 /* ============================================================
-   Barra de navegacao
+   NAVBAR
 ============================================================ */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -152,7 +153,7 @@ nav.scrolled {
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-primary); transition: .3s; }
 
 /* ============================================================
-   Card de vidro
+   GLASS CARD
 ============================================================ */
 .glass {
   background: var(--glass-bg);
@@ -167,7 +168,7 @@ nav.scrolled {
 }
 
 /* ============================================================
-   Tag e pill
+   PILL / TAG
 ============================================================ */
 .pill {
   display: inline-flex; align-items: center; gap: 6px;
@@ -181,7 +182,7 @@ nav.scrolled {
 .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 6px #4ade80; }
 
 /* ============================================================
-   Label de section
+   SECTION LABEL
 ============================================================ */
 .section-label {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -1320,10 +1321,11 @@ window.addEventListener('scroll', () => {
   const ctx = canvas.getContext('2d');
   let W, H, particles, mouse = { x: -9999, y: -9999 };
 
-  const COUNT        = 90;    // number of particles
-  const CONN_DIST    = 140;   // max px to draw a line between particles
-  const MOUSE_DIST   = 180;   // mouse attraction radius
-  const MOUSE_FORCE  = 0.012; // how strongly mouse pulls
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+  const COUNT        = isTouch ? 40 : 90;
+  const CONN_DIST    = 140;
+  const MOUSE_DIST   = 180;
+  const MOUSE_FORCE  = 0.012;
 
   // Color palette — purples & blue-purples
   const COLORS = [
@@ -1439,18 +1441,13 @@ window.addEventListener('scroll', () => {
     requestAnimationFrame(tick);
   }
 
-  window.addEventListener('mousemove', e => {
-    // canvas is fixed, so clientX/Y maps directly
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-  window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
-
-  // touch support
-  window.addEventListener('touchmove', e => {
-    mouse.x = e.touches[0].clientX;
-    mouse.y = e.touches[0].clientY;
-  }, { passive: true });
+  if (!isTouch) {
+    window.addEventListener('mousemove', e => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+  }
 
   resize();
   createParticles();
